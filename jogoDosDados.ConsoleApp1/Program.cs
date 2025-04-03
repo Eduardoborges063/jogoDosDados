@@ -23,31 +23,7 @@ namespace jogoDosDados.ConsoleApp1
                 while (jogoEstaEmAndamento)
                 {
                     PosicaoDoJogador();
-
-                    // computador
-                    ExibirCabecalho();
-
-                    int resultadoComputador = LancaDado();
-
-                    ExibirResultadoSorteio(resultadoComputador);
-
-                    posicaoConputador += resultadoComputador;
-
-                    Console.WriteLine("---------------------------------------");
-
-                    if (posicaoConputador >= limiteLinhaChegada)
-                    {
-                        Console.WriteLine("o computador ganhou :(");
-
-                        jogoEstaEmAndamento = false;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"O computador está na posiçao : {posicaoConputador} de {limiteLinhaChegada}");
-                        Console.WriteLine("---------------------------------------");
-                    }
-                    Console.Write("pressione ENTER para continuar . . .");
-                    Console.ReadLine();
+                    PosicaoDoComputador();
                 }
                
                 string opcaoContinuar = ExibirMenuContinuar();
@@ -121,9 +97,34 @@ namespace jogoDosDados.ConsoleApp1
             Console.ReadLine();
             return jogoEstaEmAndamento;
         }
-        static void PosicaoDoComputador()
+        static void PosicaoDoComputador(int posicaoConputador)
         {
+            bool jogoEstaEmAndamento = true;
+            
+            // computador
+            ExibirCabecalho();
 
+            int resultadoComputador = LancaDado();
+
+            ExibirResultadoSorteio(resultadoComputador);
+
+            posicaoConputador += resultadoComputador;
+
+            Console.WriteLine("---------------------------------------");
+
+            if (posicaoConputador >= limiteLinhaChegada)
+            {
+                Console.WriteLine("o computador ganhou :(");
+
+                jogoEstaEmAndamento = false;
+            }
+            else
+            {
+                Console.WriteLine($"O computador está na posiçao : {posicaoConputador} de {limiteLinhaChegada}");
+                Console.WriteLine("---------------------------------------");
+            }
+            Console.Write("pressione ENTER para continuar . . .");
+            Console.ReadLine();
         }
     }
 }
